@@ -1,0 +1,29 @@
+@using EcoKids.Models
+@model Dechet
+
+@{
+    ViewData["Title"] = "Trier les déchets";
+}
+
+<div class="ek-card">
+    <h2 class="ek-title">Où va ce déchet ? 🤔</h2>
+    <p class="ek-subtitle">Clique sur la bonne poubelle !</p>
+
+    <div class="ek-item">
+        <div class="ek-item-emoji">@Model.Emoji</div>
+        <p class="ek-item-name">@Model.Nom</p>
+    </div>
+
+    <form asp-action="Trier" method="post">
+        <input type="hidden" name="dechetId" value="@Model.Id" />
+        <div class="ek-bins">
+            @foreach (var cat in Enum.GetValues<CategorieDechet>())
+            {
+                <button type="submit" name="choix" value="@cat" class="ek-bin bin-@cat.CssClass()">
+                    <span class="ico">@cat.Icone()</span>
+                    <span>@cat.Libelle()</span>
+                </button>
+            }
+        </div>
+    </form>
+</div>

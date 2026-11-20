@@ -1,0 +1,195 @@
+body {
+    background: linear-gradient(180deg, #e6f7e9 0%, #ffffff 65%);
+    min-height: 100vh;
+}
+
+/* Carte principale */
+.ek-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    max-width: 760px;
+    margin: 1.5rem auto;
+}
+
+.ek-title {
+    font-weight: 800;
+    color: #2e7d32;
+}
+
+.ek-subtitle {
+    color: #6c757d;
+}
+
+/* Le déchet à trier */
+.ek-item {
+    display: inline-block;
+    background: #f5f9f5;
+    border: 3px dashed #a5d6a7;
+    border-radius: 1.5rem;
+    padding: 1.2rem 2.5rem;
+    margin: 1rem 0;
+}
+
+.ek-item-emoji {
+    font-size: 6rem;
+    line-height: 1;
+    animation: pop .5s ease;
+}
+
+.ek-item-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: .4rem 0 0;
+}
+
+/* Les poubelles */
+.ek-bins {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.ek-bin {
+    border: 0;
+    border-radius: 1.25rem;
+    padding: 1.2rem .5rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, .2);
+}
+
+    .ek-bin .ico {
+        font-size: 2.5rem;
+    }
+
+    .ek-bin:hover {
+        transform: translateY(-6px) scale(1.04);
+        box-shadow: 0 10px 0 rgba(0, 0, 0, .15);
+    }
+
+    .ek-bin:active {
+        transform: translateY(0) scale(.97);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, .2);
+    }
+
+    .ek-bin:focus-visible {
+        outline: 4px solid #212529;
+        outline-offset: 3px;
+    }
+
+.bin-plastique {
+    background: #f4b400;
+    color: #212529;
+}
+
+.bin-papier {
+    background: #1e88e5;
+}
+
+.bin-verre {
+    background: #2e7d32;
+}
+
+.bin-organique {
+    background: #795548;
+}
+
+.bin-metal {
+    background: #607d8b;
+}
+
+/* Résultat */
+.ek-result {
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+    .ek-result.ok {
+        background: #e8f5e9;
+        border: 3px solid #43a047;
+        animation: pop .5s ease;
+    }
+
+    .ek-result.bad {
+        background: #fdecea;
+        border: 3px solid #e53935;
+        animation: shake .5s ease;
+    }
+
+.ek-result-icon {
+    font-size: 4rem;
+}
+
+.ek-points {
+    display: inline-block;
+    background: #ffc107;
+    color: #212529;
+    font-weight: 800;
+    border-radius: 2rem;
+    padding: .4rem 1.2rem;
+    font-size: 1.2rem;
+}
+
+.ek-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    color: #fff;
+    border-radius: 2rem;
+    padding: .3rem 1rem;
+    font-weight: 700;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(.3);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    20%, 60% {
+        transform: translateX(-8px);
+    }
+
+    40%, 80% {
+        transform: translateX(8px);
+    }
+}
+
+.bin-textile {
+    background: #8e24aa;
+}
+
+/* Respect des utilisateurs sensibles aux animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
