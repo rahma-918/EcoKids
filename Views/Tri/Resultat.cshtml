@@ -1,0 +1,36 @@
+@using EcoKids.Models
+@model ResultatTri
+
+@{
+    ViewData["Title"] = "Résultat";
+}
+
+<div class="ek-card">
+    <div class="ek-result @(Model.EstCorrect ? "ok" : "bad")">
+        <div class="ek-result-icon">@(Model.EstCorrect ? "🎉" : "😅")</div>
+        <h2>@Model.Message</h2>
+
+        <p class="fs-4 mb-3">@Model.Dechet.Emoji @Model.Dechet.Nom</p>
+
+        <p>
+            Ton choix :
+            <span class="ek-chip bin-@Model.ChoixJoueur.CssClass()">
+                @Model.ChoixJoueur.Icone() @Model.ChoixJoueur.Libelle()
+            </span>
+        </p>
+
+        @if (!Model.EstCorrect)
+        {
+            <p>
+                Bonne poubelle :
+                <span class="ek-chip bin-@Model.Dechet.CategorieCorrecte.CssClass()">
+                    @Model.Dechet.CategorieCorrecte.Icone() @Model.Dechet.CategorieCorrecte.Libelle()
+                </span>
+            </p>
+        }
+
+        <p class="mt-3"><span class="ek-points">+ @Model.PointsGagnes points ⭐</span></p>
+    </div>
+
+    <a asp-action="Index" class="btn btn-success btn-lg rounded-pill px-5">Déchet suivant ➡️</a>
+</div>
